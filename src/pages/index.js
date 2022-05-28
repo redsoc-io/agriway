@@ -13,7 +13,6 @@ export default function IndexPage({ session }) {
       {
         session && (
           <>
-            {JSON.parse(session.token.sub).role === "a" && <h1 className="text-center w-full text-3xl py-6">Welcome Agent!</h1>}
             {JSON.parse(session.token.sub).role === "s" && <h1 className="text-center w-full text-3xl py-6">Welcome Supervisor!</h1>}
             {JSON.parse(session.token.sub).role === "u" && <Home />}
           </>
