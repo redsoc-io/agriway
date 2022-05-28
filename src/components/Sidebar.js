@@ -102,7 +102,7 @@ export default function Sidebar({ session, toggleCollapse, collapsed }) {
           </div>
           <div className="w-full py-12 mt-10">
             <ul className="w-full cursor-pointer">
-              {(session ? (role === 's') ? supBar : userBar : xBar).map((item, index) => {
+              {(getNav(session, role)).map((item, index) => {
                 return <NavUnit key={index} item={item} collapsed={collapsed} />;
               })}
 
@@ -153,4 +153,17 @@ export default function Sidebar({ session, toggleCollapse, collapsed }) {
       )}
     </>
   );
+}
+
+function getNav(session, role) {
+  if (session) {
+    if (role == 's') {
+      return supBar;
+    } else if (role == 'u') {
+      return userBar;
+    }
+  }
+  else {
+    return xBar;
+  }
 }
