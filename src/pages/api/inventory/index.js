@@ -12,7 +12,7 @@ export default async function Add(req, res) {
 
         if (supid) {
             const query = format(
-                "SELECT inventory.arrived_at, inventory.quantity, traders.name as trader_name, products.name as product_name, inventory.grading as product_grading FROM `inventory`, `traders`, `products` WHERE products.id = inventory.product_id AND traders.id = inventory.trader_id AND traders.sup_id = ?;",
+                "SELECT inventory.id as id, inventory.location, inventory.arrived_at, inventory.quantity, traders.name as trader_name, products.name as product_name, inventory.grading as product_grading FROM `inventory`, `traders`, `products` WHERE products.id = inventory.product_id AND traders.id = inventory.trader_id AND inventory.quantity > 0 AND traders.sup_id = ?;",
                 [supid]
             );
             status.inventory = await db.query(query);
