@@ -1,6 +1,7 @@
 import Home from "../components/views/Home/Home";
 import { getSession } from "next-auth/react"
 import Wrapper from "../components/views/Wrapper";
+import { useEffect } from "react";
 import Head from "next/head"
 
 export default function IndexPage({ session }) {
@@ -10,7 +11,13 @@ export default function IndexPage({ session }) {
         <title>AgriWay: Home </title>
       </Head>
       {
-        session && JSON.parse(session.token.sub).role === "s" ? <h1 className="text-center w-full text-3xl py-6">Welcome Supervisor!</h1> : <Home />
+        session && (
+          <>
+            {JSON.parse(session.token.sub).role === "a" && <h1 className="text-center w-full text-3xl py-6">Welcome Agent!</h1>}
+            {JSON.parse(session.token.sub).role === "s" && <h1 className="text-center w-full text-3xl py-6">Welcome Supervisor!</h1>}
+            {JSON.parse(session.token.sub).role === "u" && <Home />}
+          </>
+        )
       }
     </Wrapper>
   );
