@@ -37,7 +37,7 @@ const userBar = [
 
 const supBar = [
   { icon: <CgProfile />, name: "My Profile", url: "/sup-profile" },
-  { icon: <GiFarmer />, name: "Manage Traders", url: "/traders" },
+  { icon: <GiFarmer />, name: "Manage Farmers", url: "/traders" },
   { icon: <BiTable />, name: "Inventory", url: "/inventory" }
 ]
 
